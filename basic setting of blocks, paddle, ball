@@ -1,0 +1,60 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace BlockBreaking
+{
+    public partial class Form1 : Form
+    {
+        public int vSpeed;
+        public int hSpeed;
+        public const int row = 5;
+        public const int col = 6;
+        public int points = 0;
+        public PictureBox[,] blocks;
+
+        public Form1()
+        {
+            InitializeComponent();
+            vSpeed = 5;
+            hSpeed = 5;
+            setBlocks();
+            Cursor.Hide();
+            
+
+            this.FormBorderStyle = FormBorderStyle.None; 
+            this.TopMost = true; 
+
+            picPaddle.Top = groundBottom.Top - 40;
+            Gameover_lbl.Visible = false;
+        }
+        private void setBlocks()
+        {
+            int blockHeight = 25;
+            int blockWidth = 100;
+
+            blocks = new PictureBox[row, col];
+
+            for (int x = 0; x < row; x++)
+            {
+                for (int y = 0; y < col; y++)
+                {
+                    blocks[x, y] = new PictureBox();
+
+                    blocks[x, y].Width = blockWidth;
+                    blocks[x, y].Height = blockHeight;
+                    blocks[x, y].Top = blockHeight * x;
+                    blocks[x, y].Left = blockWidth * y;
+                    blocks[x, y].BackColor = Color.Green;
+                    blocks[x, y].BorderStyle = BorderStyle.Fixed3D;
+
+                    this.Controls.Add(blocks[x, y]);
+                }
+            }
+        }
