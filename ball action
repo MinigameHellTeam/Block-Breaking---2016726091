@@ -1,0 +1,29 @@
+private void timer1_Tick(object sender, EventArgs e)
+        {
+            picPaddle.Left = Cursor.Position.X - (picPaddle.Width / 2);
+            picBall.Top += vSpeed;
+            picBall.Left += hSpeed;
+
+
+            if (picBall.Bottom > this.ClientSize.Height)
+            {
+                vSpeed = -vSpeed;
+            }
+            if (picBall.Top < 0)
+            {
+                vSpeed = -vSpeed;
+            }
+            if (picBall.Right > this.ClientSize.Width)
+            {
+                hSpeed = -hSpeed;
+            }
+            if (picBall.Left < 0)
+            {
+                hSpeed = -hSpeed;
+            }
+
+            if(picBall.Bottom >= groundBottom.Bottom)
+            {
+                timer1.Enabled = false; //stop the game
+                Gameover_lbl.Visible = true;
+            }
