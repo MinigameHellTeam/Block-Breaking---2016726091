@@ -1,0 +1,22 @@
+ if (picBall.Bounds.IntersectsWith(picPaddle.Bounds) == true)
+            {
+                vSpeed += 1;
+                vSpeed = -vSpeed;
+                //hSpeed = -hSpeed;
+                Random rnd = new Random();
+                groundBottom.BackColor = Color.FromArgb(rnd.Next(150, 250), rnd.Next(150, 255), rnd.Next(150, 255));
+            }
+
+            for(int x = 0; x< row; x++)
+            {
+                for(int y = 0; y < col; y++)
+                {
+                    if (picBall.Bounds.IntersectsWith(blocks[x, y].Bounds) && blocks[x,y].Visible == true)
+                    {
+                        blocks[x, y].Visible = false;
+                        vSpeed = -vSpeed;
+                        points += 1;
+                        point_lbl.Text = points.ToString();
+                    }
+                }
+            }
