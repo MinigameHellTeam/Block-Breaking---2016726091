@@ -1,0 +1,24 @@
+ private void Initialize(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape) { this.Close(); } //press Excape to quit
+            if (e.KeyCode == Keys.F1)
+            {
+                picBall.Top = 200;
+                picBall.Left = 200;
+                vSpeed = 5;
+                hSpeed = 5;
+                Gameover_lbl.Visible = false;
+                points = 0;
+                point_lbl.Text = points.ToString();
+
+                for (int x = 0; x < row; x++)
+                {
+                    for (int y = 0; y < col; y++)
+                    {
+                        blocks[x, y].Visible = true;
+                    }
+                }
+
+                timer1.Enabled = true;
+            }
+        }
