@@ -25,8 +25,8 @@ namespace BlockBreaking
         public Form1()
         {
             InitializeComponent();
-            vSpeed = 5; // 공의 수평 속도 설정
-            hSpeed = 5; // 공의 수직 속도 설정
+            vSpeed = 2; // 공의 수평 속도 설정
+            hSpeed = 2; // 공의 수직 속도 설정
             setBlocks();
             Cursor.Hide();
 
