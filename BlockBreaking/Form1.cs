@@ -21,7 +21,6 @@ namespace BlockBreaking
         public PictureBox[,] blocks;
         private Random randBlock;
 
-
         public Form1()
         {
             InitializeComponent();
@@ -35,7 +34,8 @@ namespace BlockBreaking
 
             picPaddle.Top = groundBottom.Top - 40;
             Gameover_lbl.Visible = false;
-
+            
+            // random으로 벽돌 이미지를 선택
             DateTime now = DateTime.Now;
          
             for (int x = 0; x < row; x++)
@@ -62,6 +62,8 @@ namespace BlockBreaking
                 }
             }
         }
+        
+        // 초기 block 
         private void setBlocks()
         {
             int blockHeight = 30;
@@ -87,14 +89,15 @@ namespace BlockBreaking
                 }
             }
         }
-
+        
+        // 공에 따른 action  
         private void timer1_Tick(object sender, EventArgs e)
         {
             picPaddle.Left = Cursor.Position.X - (picPaddle.Width / 2);
             picBall.Top += vSpeed;
             picBall.Left += hSpeed;
 
-            // ball collides with wall
+            // 공이 벽면에 부딪힌 경우
             if (picBall.Bottom > this.ClientSize.Height)
             {
                 vSpeed = -vSpeed;
@@ -111,14 +114,15 @@ namespace BlockBreaking
             {
                 hSpeed = -hSpeed;
             }
-            // ball falls down
+            
+            // 공이 떨어진 뒤에 게임 종료
             if(picBall.Bottom >= groundBottom.Bottom)
             {
                 timer1.Enabled = false; //stop the game
                 Gameover_lbl.Visible = true;
             }
 
-            // ball collides with paddle
+            // 공이 막대에 부딪힌 경우
             if (picBall.Bounds.IntersectsWith(picPaddle.Bounds) == true)
             {
                 vSpeed += 1;
@@ -128,7 +132,7 @@ namespace BlockBreaking
                 groundBottom.BackColor = Color.FromArgb(rnd.Next(150, 250), rnd.Next(150, 255), rnd.Next(150, 255));
             }
 
-            //detect collision with blocks
+            // 공이 벽돌에 부딪힌 경우
             for(int x = 0; x< row; x++)
             {
                 for(int y = 0; y < col; y++)
@@ -143,7 +147,8 @@ namespace BlockBreaking
                 }
             }
         }
-
+        
+        // 게임 
         private void Initialize(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape) { this.Close(); } //press Excape to quit
