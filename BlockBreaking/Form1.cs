@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace BlockBreaking
 {
@@ -18,6 +19,8 @@ namespace BlockBreaking
         public const int col = 6;
         public int points = 0;
         public PictureBox[,] blocks;
+        private Random randBlock;
+
 
         public Form1()
         {
@@ -26,17 +29,42 @@ namespace BlockBreaking
             hSpeed = 5;
             setBlocks();
             Cursor.Hide();
-            
 
             this.FormBorderStyle = FormBorderStyle.None; //remove any border
             this.TopMost = true; // bring the form to the front
 
             picPaddle.Top = groundBottom.Top - 40;
             Gameover_lbl.Visible = false;
+
+            DateTime now = DateTime.Now;
+         
+            for (int x = 0; x < row; x++)
+            {
+                for (int y = 0; y < col; y++)
+                {
+                    this.randBlock = new Random(now.Millisecond+x+y);
+                    int num1 = this.randBlock.Next(1, 4);
+                    switch (num1)
+                    {
+                        case 1:
+                            blocks[x, y].Image = Properties.Resources.Artboard_1;
+                            break;
+                        case 2:
+                            blocks[x, y].Image = Properties.Resources.Artboard_2;
+                            break;
+                        case 3:
+                            blocks[x, y].Image = Properties.Resources.Artboard_3;
+                            break;
+                        case 4:
+                            blocks[x, y].Image = Properties.Resources.Artboard_4;
+                            break;
+                    }
+                }
+            }
         }
         private void setBlocks()
         {
-            int blockHeight = 25;
+            int blockHeight = 30;
             int blockWidth = 100;
 
             blocks = new PictureBox[row, col];
@@ -51,8 +79,9 @@ namespace BlockBreaking
                     blocks[x, y].Height = blockHeight;
                     blocks[x, y].Top = blockHeight * x;
                     blocks[x, y].Left = blockWidth * y;
-                    blocks[x, y].BackColor = Color.Green;
+                    blocks[x, y].BackColor = Color.Transparent;
                     blocks[x, y].BorderStyle = BorderStyle.Fixed3D;
+                    blocks[x, y].SizeMode = PictureBoxSizeMode.StretchImage;
 
                     this.Controls.Add(blocks[x, y]);
                 }

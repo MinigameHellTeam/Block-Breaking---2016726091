@@ -122,7 +122,7 @@
             this.Controls.Add(this.picPaddle);
             this.Controls.Add(this.picBall);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Block Breaking";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Initialize);
             ((System.ComponentModel.ISupportInitialize)(this.picPaddle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBall)).EndInit();
