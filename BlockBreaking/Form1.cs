@@ -25,15 +25,15 @@ namespace BlockBreaking
         public Form1()
         {
             InitializeComponent();
-            vSpeed = 5;
-            hSpeed = 5;
+            vSpeed = 5; // 공의 수평 속도 설정
+            hSpeed = 5; // 공의 수직 속도 설정
             setBlocks();
             Cursor.Hide();
 
-            this.FormBorderStyle = FormBorderStyle.None; //remove any border
-            this.TopMost = true; // bring the form to the front
+            this.FormBorderStyle = FormBorderStyle.None; 
+            this.TopMost = true; 
 
-            picPaddle.Top = groundBottom.Top - 40;
+            picPaddle.Top = groundBottom.Top - 40; // paddle 위치 지정
             Gameover_lbl.Visible = false;
             AboutLevel.Visible = false;
 
@@ -43,7 +43,7 @@ namespace BlockBreaking
             {
                 for (int y = 0; y < col; y++)
                 {
-                    this.randBlock = new Random(now.Millisecond+x+y);
+                    this.randBlock = new Random(now.Millisecond+x+y); //random 함수 원리 이용해서 블록 이미지 지정
                     int num1 = this.randBlock.Next(1, 4);
                     switch (num1)
                     {
@@ -63,7 +63,7 @@ namespace BlockBreaking
                 }
             }
         }
-        private void setBlocks()
+        private void setBlocks() // 블록 setting
         {
             int blockHeight = 30;
             int blockWidth = 100;
@@ -88,10 +88,11 @@ namespace BlockBreaking
                 }
             }
         }
+        // 초기화
         private void Initialize(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Escape) { this.Close(); } //press Excape to quit
-            if (e.KeyCode == Keys.F1)
+            if (e.KeyCode == Keys.Escape) { this.Close(); } //Esc 버튼을 누르면 게임 종료
+            if (e.KeyCode == Keys.F1) // F1을 누르면 게임 재시작
             {
                 picBall.Top = 200;
                 picBall.Left = 200;
@@ -112,7 +113,7 @@ namespace BlockBreaking
                 timer1.Enabled = true;
             }
         }
-        private static DateTime Delay(int MS)
+        private static DateTime Delay(int MS) // 시간 지연 함수
         {
             DateTime ThisMoment = DateTime.Now;
             TimeSpan duration = new TimeSpan(0, 0, 0, 0, MS);
@@ -133,7 +134,7 @@ namespace BlockBreaking
             picBall.Top += vSpeed;
             picBall.Left += hSpeed;
 
-            // ball collides with wall
+            // 공이 벽에 부딪혔을 경우
             if (picBall.Bottom > this.ClientSize.Height)
             {
                 vSpeed = -vSpeed;
@@ -150,14 +151,14 @@ namespace BlockBreaking
             {
                 hSpeed = -hSpeed;
             }
-            // ball falls down
+            // 공이 떨어진 경우
             if(picBall.Bottom >= groundBottom.Bottom)
             {
                 timer1.Enabled = false; //stop the game
                 Gameover_lbl.Visible = true;
             }
 
-            // ball collides with paddle
+            // 공이 paddle에 부딪힌 경우
             if (picBall.Bounds.IntersectsWith(picPaddle.Bounds) == true)
             {
                 vSpeed += 1;
@@ -167,7 +168,7 @@ namespace BlockBreaking
                 groundBottom.BackColor = Color.FromArgb(rnd.Next(150, 250), rnd.Next(150, 255), rnd.Next(150, 255));
             }
 
-            //detect collision with blocks
+            //공이 block 에 부딪힌 경우
             for(int x = 0; x< row; x++)
             {
                 for(int y = 0; y < col; y++)
@@ -179,7 +180,7 @@ namespace BlockBreaking
                         points += 1;
                         point_lbl.Text = points.ToString();
 
-                        if (points == 30)
+                        if (points == 30) // 다음 단계로 이동
                         {
                             level += 1;
                             level_lbl.Text = level.ToString();
@@ -214,7 +215,8 @@ namespace BlockBreaking
                 }
             }
         }
-
+        
+        // 메뉴창에서 "새로운 게임"을 누른 경우
         private void 새로운게임ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             picBall.Top = 200;
@@ -235,7 +237,8 @@ namespace BlockBreaking
 
             timer1.Enabled = true;
         }
-
+        
+        // 메뉴창에서 "나가기"를 누른 경우
         private void 나가기ToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             this.Close();
