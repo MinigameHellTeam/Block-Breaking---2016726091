@@ -63,7 +63,7 @@ namespace BlockBreaking
             }
         }
         
-        // 초기 block 
+        // 초기 block 설정
         private void setBlocks()
         {
             int blockHeight = 30;
@@ -148,7 +148,7 @@ namespace BlockBreaking
             }
         }
         
-        // 게임 
+        // 게임 초기화
         private void Initialize(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape) { this.Close(); } //press Excape to quit
