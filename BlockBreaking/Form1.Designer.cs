@@ -40,6 +40,9 @@
             this.나가기ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.picPaddle = new System.Windows.Forms.PictureBox();
             this.picBall = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.level_lbl = new System.Windows.Forms.Label();
+            this.AboutLevel = new System.Windows.Forms.Label();
             this.groundBottom.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picPaddle)).BeginInit();
@@ -57,11 +60,11 @@
             this.Gameover_lbl.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Gameover_lbl.AutoSize = true;
             this.Gameover_lbl.BackColor = System.Drawing.Color.Transparent;
-            this.Gameover_lbl.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Gameover_lbl.Location = new System.Drawing.Point(346, 289);
+            this.Gameover_lbl.Font = new System.Drawing.Font("궁서", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Gameover_lbl.Location = new System.Drawing.Point(317, 299);
             this.Gameover_lbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Gameover_lbl.Name = "Gameover_lbl";
-            this.Gameover_lbl.Size = new System.Drawing.Size(154, 96);
+            this.Gameover_lbl.Size = new System.Drawing.Size(225, 112);
             this.Gameover_lbl.TabIndex = 6;
             this.Gameover_lbl.Text = "Game Over\r\n\r\nF1 -> Restart\r\nEsc -> Exit\r\n";
             this.Gameover_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -69,7 +72,7 @@
             // point_lbl
             // 
             this.point_lbl.AutoSize = true;
-            this.point_lbl.Font = new System.Drawing.Font("굴림", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.point_lbl.Font = new System.Drawing.Font("궁서", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.point_lbl.Location = new System.Drawing.Point(428, 10);
             this.point_lbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.point_lbl.Name = "point_lbl";
@@ -80,7 +83,7 @@
             // score_lbl
             // 
             this.score_lbl.AutoSize = true;
-            this.score_lbl.Font = new System.Drawing.Font("굴림", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.score_lbl.Font = new System.Drawing.Font("궁서", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.score_lbl.Location = new System.Drawing.Point(338, 10);
             this.score_lbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.score_lbl.Name = "score_lbl";
@@ -90,6 +93,8 @@
             // 
             // groundBottom
             // 
+            this.groundBottom.Controls.Add(this.level_lbl);
+            this.groundBottom.Controls.Add(this.label1);
             this.groundBottom.Controls.Add(this.score_lbl);
             this.groundBottom.Controls.Add(this.point_lbl);
             this.groundBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -100,6 +105,7 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.메뉴ToolStripMenuItem});
@@ -156,6 +162,42 @@
             this.picBall.TabIndex = 4;
             this.picBall.TabStop = false;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("궁서", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label1.Location = new System.Drawing.Point(689, 10);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 22);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Level";
+            // 
+            // level_lbl
+            // 
+            this.level_lbl.AutoSize = true;
+            this.level_lbl.Font = new System.Drawing.Font("궁서", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.level_lbl.Location = new System.Drawing.Point(762, 10);
+            this.level_lbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.level_lbl.Name = "level_lbl";
+            this.level_lbl.Size = new System.Drawing.Size(22, 22);
+            this.level_lbl.TabIndex = 10;
+            this.level_lbl.Text = "1";
+            // 
+            // AboutLevel
+            // 
+            this.AboutLevel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.AboutLevel.AutoSize = true;
+            this.AboutLevel.BackColor = System.Drawing.Color.Transparent;
+            this.AboutLevel.Font = new System.Drawing.Font("궁서", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.AboutLevel.Location = new System.Drawing.Point(348, 327);
+            this.AboutLevel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.AboutLevel.Name = "AboutLevel";
+            this.AboutLevel.Size = new System.Drawing.Size(175, 56);
+            this.AboutLevel.TabIndex = 11;
+            this.AboutLevel.Text = "Next Level\r\n\r\n";
+            this.AboutLevel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
@@ -163,6 +205,7 @@
             this.BackColor = System.Drawing.Color.LightSkyBlue;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(856, 682);
+            this.Controls.Add(this.AboutLevel);
             this.Controls.Add(this.groundBottom);
             this.Controls.Add(this.Gameover_lbl);
             this.Controls.Add(this.picPaddle);
@@ -195,6 +238,9 @@
         private System.Windows.Forms.ToolStripMenuItem 메뉴ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 새로운게임ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 나가기ToolStripMenuItem1;
+        private System.Windows.Forms.Label level_lbl;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label AboutLevel;
     }
 }
 
