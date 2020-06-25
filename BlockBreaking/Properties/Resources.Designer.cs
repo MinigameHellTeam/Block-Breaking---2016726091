@@ -63,6 +63,16 @@ namespace BlockBreaking.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
+        internal static System.Drawing.Bitmap _3bb303c76f55866af2dfdc95aa040105 {
+            get {
+                object obj = ResourceManager.GetObject("3bb303c76f55866af2dfdc95aa040105", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
         internal static System.Drawing.Bitmap Artboard_1 {
             get {
                 object obj = ResourceManager.GetObject("Artboard_1", resourceCulture);

@@ -21,6 +21,7 @@ namespace BlockBreaking
         public PictureBox[,] blocks;
         private Random randBlock;
 
+
         public Form1()
         {
             InitializeComponent();
@@ -34,8 +35,7 @@ namespace BlockBreaking
 
             picPaddle.Top = groundBottom.Top - 40;
             Gameover_lbl.Visible = false;
-            
-            // random으로 벽돌 이미지를 선택
+
             DateTime now = DateTime.Now;
          
             for (int x = 0; x < row; x++)
@@ -62,8 +62,6 @@ namespace BlockBreaking
                 }
             }
         }
-        
-        // 초기 block 설정
         private void setBlocks()
         {
             int blockHeight = 30;
@@ -79,7 +77,7 @@ namespace BlockBreaking
 
                     blocks[x, y].Width = blockWidth;
                     blocks[x, y].Height = blockHeight;
-                    blocks[x, y].Top = blockHeight * x;
+                    blocks[x, y].Top = blockHeight * x + 25;
                     blocks[x, y].Left = blockWidth * y;
                     blocks[x, y].BackColor = Color.Transparent;
                     blocks[x, y].BorderStyle = BorderStyle.Fixed3D;
@@ -89,15 +87,14 @@ namespace BlockBreaking
                 }
             }
         }
-        
-        // 공에 따른 action  
+
         private void timer1_Tick(object sender, EventArgs e)
         {
             picPaddle.Left = Cursor.Position.X - (picPaddle.Width / 2);
             picBall.Top += vSpeed;
             picBall.Left += hSpeed;
 
-            // 공이 벽면에 부딪힌 경우
+            // ball collides with wall
             if (picBall.Bottom > this.ClientSize.Height)
             {
                 vSpeed = -vSpeed;
@@ -114,15 +111,14 @@ namespace BlockBreaking
             {
                 hSpeed = -hSpeed;
             }
-            
-            // 공이 떨어진 뒤에 게임 종료
+            // ball falls down
             if(picBall.Bottom >= groundBottom.Bottom)
             {
                 timer1.Enabled = false; //stop the game
                 Gameover_lbl.Visible = true;
             }
 
-            // 공이 막대에 부딪힌 경우
+            // ball collides with paddle
             if (picBall.Bounds.IntersectsWith(picPaddle.Bounds) == true)
             {
                 vSpeed += 1;
@@ -132,7 +128,7 @@ namespace BlockBreaking
                 groundBottom.BackColor = Color.FromArgb(rnd.Next(150, 250), rnd.Next(150, 255), rnd.Next(150, 255));
             }
 
-            // 공이 벽돌에 부딪힌 경우
+            //detect collision with blocks
             for(int x = 0; x< row; x++)
             {
                 for(int y = 0; y < col; y++)
@@ -147,8 +143,7 @@ namespace BlockBreaking
                 }
             }
         }
-        
-        // 게임 초기화
+
         private void Initialize(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape) { this.Close(); } //press Excape to quit
@@ -172,6 +167,32 @@ namespace BlockBreaking
 
                 timer1.Enabled = true;
             }
+        }
+
+        private void 새로운게임ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            picBall.Top = 200;
+            picBall.Left = 200;
+            vSpeed = 5;
+            hSpeed = 5;
+            Gameover_lbl.Visible = false;
+            points = 0;
+            point_lbl.Text = points.ToString();
+
+            for (int x = 0; x < row; x++)
+            {
+                for (int y = 0; y < col; y++)
+                {
+                    blocks[x, y].Visible = true;
+                }
+            }
+
+            timer1.Enabled = true;
+        }
+
+        private void 나가기ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
